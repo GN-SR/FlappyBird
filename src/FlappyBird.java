@@ -190,7 +190,13 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
             velocityY = -9;
             if(gameOver){
                 //restart game
-
+                bird.y = birdY;
+                velocityY = 0;
+                pipes.clear();
+                score = 0;
+                gameOver = false;
+                gameLoop.start();
+                placePipesTimer.start();
             }
         }
     }
