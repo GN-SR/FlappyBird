@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
 
-public class FlappyBird extends JPanel implements ActionListener {
+public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
     int boardWidth = 360;
     int boardHeight = 640;
@@ -21,6 +21,7 @@ public class FlappyBird extends JPanel implements ActionListener {
     int birdWidth = 34;
     int birdHeight = 24;
 
+
     class Bird{
         int x = birdX;
         int y = birdY;
@@ -32,15 +33,35 @@ public class FlappyBird extends JPanel implements ActionListener {
             this.img = img;
         }
     }
+
+    //Pipes
+    int pipeX = boardWidth;
+    int pipeY = 0;
+    int pipeWidth = 64;
+    int pipeHeight = 512;
+
+    class Pipe{
+        int x = pipeX;
+        int y = pipeY;
+        int width = pipeWidth;
+        int height = pipeHeight;
+        Image img;
+    }
+
     // Game Logic
     Bird bird;
-    int velocityY = -6;
+    int velocityY = 0;
+    int gravity = 1;
 
     Timer gameLoop;
 
     FlappyBird(){
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         //setBackground(Color.blue);
+
+        setFocusable(true);
+        addKeyListener(this);
+
         //Load Images
         backgroundImg = new ImageIcon(getClass().getResource("./flappybirdbg.png")).getImage();
         birdImg = new ImageIcon(getClass().getResource("./flappybird.png")).getImage();
@@ -62,7 +83,6 @@ public class FlappyBird extends JPanel implements ActionListener {
 
     public void draw(Graphics g){
 
-        System.out.println("draw");
         //background
         g.drawImage(backgroundImg, 0, 0, boardWidth, boardHeight, null);
 
@@ -73,6 +93,7 @@ public class FlappyBird extends JPanel implements ActionListener {
 
     public void move(){
         //bird
+        velocityY += gravity;
         bird.y += velocityY;
         bird.y = Math.max(bird.y, 0);
     }
@@ -82,5 +103,16 @@ public class FlappyBird extends JPanel implements ActionListener {
         move();
         repaint();
     }
-
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE){
+            velocityY = -9;
+        }
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
 }
