@@ -45,7 +45,7 @@ To run this project, ensure you have the following installed:
 3. **Run the Game**
    Execute the compiled files to start the game:
    ```bash
-   java src.APP
+   java src.App
    ```
 ---
 
