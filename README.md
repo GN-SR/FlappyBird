@@ -68,11 +68,11 @@ To run this project, ensure you have the following installed:
 
    The game is built using basic Java features:
 
-   -Graphics Rendering: Utilizes javax.swing and java.awt for rendering the game window, bird, and pipes.
+   -Graphics Rendering:- Utilizes javax.swing and java.awt for rendering the game window, bird, and pipes.
    
-   -Game Loop: A simple loop to update the game's state and redraw the screen at a consistent frame rate.
+   -Game Loop:- A simple loop to update the game's state and redraw the screen at a consistent frame rate.
    
-   -Collision Detection: Checks if the bird intersects with any pipes or the ground.
+   -Collision Detection:- Checks if the bird intersects with any pipes or the ground.
    
-   -Scoring: Increments the score each time the bird successfully passes between a pair of pipes.
+   -Scoring:- Increments the score each time the bird successfully passes between a pair of pipes.
 
